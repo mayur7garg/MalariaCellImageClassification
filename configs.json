@@ -1,0 +1,52 @@
+{
+    "COMMON": {
+        "RANDOM_STATE": 7,
+        "IMAGE_SIZE": [
+            128,
+            128
+        ],
+        "BASE_PATH": {
+            "UNINFECTED": "../../Datasets/Malaria Cell Images/Uninfected",
+            "PARASITIZED": "../../Datasets/Malaria Cell Images/Parasitized"
+        },
+        "PLOTS_DPI": 200
+    },
+    "RECONSTRUCTION": {
+        "MODEL_NAME": "Autoencoder_Reconstruction",
+        "DATA": {
+            "VAL_SIZE": 0.05,
+            "BATCH_SIZE": 64,
+            "SHUFFLE_BUFFER_SIZE": 1000
+        },
+        "TRAINING": {
+            "EPOCHS": 100,
+            "LEARNING_RATE": 0.004,
+            "EARLY_STOP_CALLBACK": {
+                "PATIENCE": 8
+            },
+            "REDUCE_LR_CALLBACK": {
+                "FACTOR": 0.5,
+                "PATIENCE": 4,
+                "COOLDOWN": 2,
+                "MIN_LR": 1e-5
+            },
+            "TENSORBOARD_LOG_BASE_DIR": "tensorboard_logs/Autoencoder_Reconstruction/"
+        },
+        "SAVED_MODEL_DIR": "models/Autoencoder_Reconstruction",
+        "PLOTS_DIR": "plots/Autoencoder_Reconstruction"
+    },
+    "CLASSIFICATION": {
+        "MODEL_NAME": "Autoencoder_Classification",
+        "DATA": {
+            "VAL_SIZE": 0.05,
+            "BATCH_SIZE": 64
+        },
+        "TRAINING": {
+            "EPOCHS": 100,
+            "LEARNING_RATE": 0.01,
+            "TENSORBOARD_LOG_BASE_DIR": "tensorboard_logs/Autoencoder_Classification/"
+        },
+        "SAVED_MODEL_DIR": "models/Autoencoder_Classification",
+        "PLOTS_DIR": "plots/Autoencoder_Classification"
+    }
+}
